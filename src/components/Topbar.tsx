@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import CompaniesDropdown from './CompaniesDropdown';
@@ -8,9 +8,10 @@ type Props = {
   setActiveCompany: React.Dispatch<React.SetStateAction<string | null>>;
   activeCompany: string | null;
   fetchPeriods: (company: string) => void;
+  setLoading: Dispatch<SetStateAction<boolean>>; 
 };
 
-const TopBar: React.FC<Props> = ({ setActiveCompany, activeCompany, fetchPeriods }) => {
+const TopBar: React.FC<Props> = ({ setActiveCompany, activeCompany, fetchPeriods, setLoading }) => {
   const [companies, setCompanies] = useState<string[]>([]);
   const [companiesLoading, setCompaniesLoading] = useState<boolean>(true);
   const [userName, setUserName] = useState<string>(''); 
@@ -37,7 +38,7 @@ const TopBar: React.FC<Props> = ({ setActiveCompany, activeCompany, fetchPeriods
       </div>
       <div className="flex items-center">
         {!companiesLoading && companies.length > 0 && location.pathname !== '/user-info' && (
-          <CompaniesDropdown companies={companies} activeCompany={activeCompany} setActiveCompany={setActiveCompany} fetchPeriods={fetchPeriods} />
+          <CompaniesDropdown setLoading={setLoading} companies={companies} activeCompany={activeCompany} setActiveCompany={setActiveCompany} fetchPeriods={fetchPeriods} />
         )}
       </div>
       </div>

@@ -13,6 +13,7 @@ import TopBar from './Topbar';
 import data from '../data.json';
 import GuidanceBackend from '../services/guidanceBackend';
 import { useCompanyContext } from '../layout/CompanyMainlayout';
+import { ClipLoader } from 'react-spinners';
 
 export default function GuidanceHome(): JSX.Element {
 
@@ -26,7 +27,7 @@ export default function GuidanceHome(): JSX.Element {
   const [companyName, setCompanyName] = useState<string | null>(null);
   const [guidanceRevisionsData, setGuidanceRevisionsData] = useState<any[]>([]);
   const [companyPeriods, setCompanyPeriods] = useState<{ label: string; value: { fiscalYear: number; fiscalQuarter: number | null } }[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setGuidanceRevisionsData(data?.Sheet1);
@@ -72,56 +73,62 @@ export default function GuidanceHome(): JSX.Element {
   return (
     <div>
       <div className="sticky top-0 z-[100]">
-        <TopBar activeCompany={activeCompany} setActiveCompany={setActiveCompany} fetchPeriods={fetchPeriods} />
+        <TopBar setLoading={setLoading} activeCompany={activeCompany} setActiveCompany={setActiveCompany} fetchPeriods={fetchPeriods} />
       </div>
-      <div className='mx-4 pb-4'>
-        <div className='text-start my-4'>
-          <h2 className="text-[24px] font-medium">{companyName ? companyName : 'Select Company'}</h2>
+      {loading ? (
+        <div className="flex items-center justify-center h-screen">
+          <ClipLoader size={50} color="#800080" loading={loading} />
         </div>
-        <TabView>
-          <TabPanel header="Guidance">
-            <div className='my-2 flex items-center justify-end'>
-              <div className='flex items-center justify-center gap-4'>
-                <h3 className='text-[#800080] font-medium'>Earnings Reports</h3>
-                {activeCompany && (
-                  <CompanyPeriodDropdown
-                    activeCompany={activeCompany}
-                    companyGuidancePeriod={companyGuidancePeriod}
-                    setCompanyGuidancePeriod={setCompanyGuidancePeriod}
-                    setCompanyName={setCompanyName}
-                    companyPeriods={companyPeriods}
-                    loading={loading}
-                  />
+      ) : (
+        <div className='mx-4 pb-4'>
+          <div className='text-start my-4'>
+            <h2 className="text-[24px] font-medium">{companyName ? companyName : 'Select Company'}</h2>
+          </div>
+          <TabView>
+            <TabPanel header="Guidance">
+              <div className='my-2 flex items-center justify-end'>
+                <div className='flex items-center justify-center gap-4'>
+                  <h3 className='text-[#800080] font-medium'>Earnings Reports</h3>
+                  {activeCompany && (
+                    <CompanyPeriodDropdown
+                      activeCompany={activeCompany}
+                      companyGuidancePeriod={companyGuidancePeriod}
+                      setCompanyGuidancePeriod={setCompanyGuidancePeriod}
+                      setCompanyName={setCompanyName}
+                      companyPeriods={companyPeriods}
+                      loading={loading}
+                    />
+                  )}
+                </div>
+              </div>
+              <div className='my-4 border border-[#800080] rounded'>
+                {activeCompany && companyGuidancePeriod.fiscalYear && (
+                  <CompanyGuidanceData companyGuidancePeriod={companyGuidancePeriod} activeCompany={activeCompany} />
                 )}
               </div>
-            </div>
-            <div className='my-4 border border-[#800080] rounded'>
-              {activeCompany && companyGuidancePeriod.fiscalYear && (
-                <CompanyGuidanceData companyGuidancePeriod={companyGuidancePeriod} activeCompany={activeCompany} />
-              )}
-            </div>
-          </TabPanel>
+            </TabPanel>
 
-          <TabPanel header="Guidance Revisions">
-            {companyName === 'Microsoft' && guidanceRevisionsData.length > 0 && (
-              <div>
-                <DataTable value={guidanceRevisionsData} responsiveLayout="scroll">
-                  <Column field="LineItem" header="Line Item"></Column>
-                  <Column field="Earnings Report" header="Earnings Report"></Column>
-                  <Column field="Low" header="Low"></Column>
-                  <Column field="High" header="High"></Column>
-                  <Column field="Unit" header="Unit"></Column>
-                  <Column field="Source" header="Source"></Column>
-                  <Column field="Excerpt" header="Excerpt"></Column>
-                </DataTable>
-              </div>
-            )}
-            {companyName !== 'Microsoft' && (
-              <div className="text-center text-gray-600 mt-4">No data available for guidance revisions.</div>
-            )}
-          </TabPanel>
-        </TabView>
-      </div>
+            <TabPanel header="Guidance Revisions">
+              {companyName === 'Microsoft' && guidanceRevisionsData.length > 0 && (
+                <div>
+                  <DataTable value={guidanceRevisionsData} responsiveLayout="scroll">
+                    <Column field="LineItem" header="Line Item"></Column>
+                    <Column field="Earnings Report" header="Earnings Report"></Column>
+                    <Column field="Low" header="Low"></Column>
+                    <Column field="High" header="High"></Column>
+                    <Column field="Unit" header="Unit"></Column>
+                    <Column field="Source" header="Source"></Column>
+                    <Column field="Excerpt" header="Excerpt"></Column>
+                  </DataTable>
+                </div>
+              )}
+              {companyName !== 'Microsoft' && (
+                <div className="text-center text-gray-600 mt-4">No data available for guidance revisions.</div>
+              )}
+            </TabPanel>
+          </TabView>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,18 +1,22 @@
 import { InputText } from 'primereact/inputtext';
 import { Dispatch, SetStateAction, useState } from 'react';
+
+
 interface CompaniesInputProps {
   companies: string[];
   activeCompany: string | null;
   setActiveCompany: Dispatch<SetStateAction<string | null>>;
   fetchPeriods: (company: string) => void;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function CompaniesInput({ companies, activeCompany, setActiveCompany, fetchPeriods }: CompaniesInputProps): JSX.Element {
+export default function CompaniesInput({ companies, activeCompany, setActiveCompany, fetchPeriods, setLoading }: CompaniesInputProps): JSX.Element {
   const [filteredCompanies, setFilteredCompanies] = useState<string[]>([]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setActiveCompany(inputValue);
+    setLoading(true);
     if (inputValue) {
       const matchingCompanies = companies.filter(company =>
         company.toLowerCase().includes(inputValue.toLowerCase())
@@ -21,10 +25,12 @@ export default function CompaniesInput({ companies, activeCompany, setActiveComp
     } else {
       setFilteredCompanies([]);
       setActiveCompany(null);
+      setLoading(false);
     }
   };
 
   const handleSelectCompany = (company: string) => {
+    setLoading(true);
     setActiveCompany(company);
     setFilteredCompanies([]);
   };
