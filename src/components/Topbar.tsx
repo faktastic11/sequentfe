@@ -13,7 +13,7 @@ type Props = {
 const TopBar: React.FC<Props> = ({ setActiveCompany, activeCompany, fetchPeriods }) => {
   const [companies, setCompanies] = useState<string[]>([]);
   const [companiesLoading, setCompaniesLoading] = useState<boolean>(true);
-  const [userName, setUserName] = useState<string>(''); // State to hold the user's name
+  const [userName, setUserName] = useState<string>(''); 
   const location = useLocation();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const TopBar: React.FC<Props> = ({ setActiveCompany, activeCompany, fetchPeriods
   }, []);
 
   return (
-    <div className="w-full bg-[#6200ee] text-white flex py-4 px-4 items-center justify-between">
+    <div className="w-full bg-[#800080] text-white flex py-4 px-4 items-center justify-between">
       <div className='flex  gap-4 '>
       <div>
         <h1 className="text-3xl font-medium">Sequent</h1>

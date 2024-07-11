@@ -137,14 +137,14 @@ export default function CompanyGuidanceData({ companyGuidancePeriod, activeCompa
     <div>
       {loading ? (
         <div className="flex justify-center items-center h-64">
-          <ClipLoader size={50} color="#6200ee" loading={loading} />
+          <ClipLoader size={50} color="#800080" loading={loading} />
         </div>
       ) : (
         <div>
           <div className="flex justify-between p-4">
             <h3 className="font-bold text-[24px] text-[#4b5563]">Earnings Call Guidance</h3>
             <button
-              className="text-[14px] border-[#6200ee] border text-[#6200ee] px-[14px] py-2 rounded-md hover:border-[#6200ee] focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50"
+              className="text-[14px] border-[#800080] border text-[#800080] px-[14px] py-2 rounded-md hover:border-[#800080] focus:outline-none focus:ring-2 focus:ring-[#b19cd9] focus:ring-opacity-50"
               onClick={handleDownloadCSV}
             >
               DOWNLOAD

@@ -38,7 +38,7 @@ export default function CompaniesInput({ companies, activeCompany, setActiveComp
         placeholder="Enter a Ticker"
       />
       {filteredCompanies.length > 0 && (
-        <ul className="absolute rounded z-10 bg-white text-[#6200ee] border mt-1 w-[300px] max-h-60 overflow-y-auto shadow-lg">
+        <ul className="absolute rounded z-10 bg-white text-[#800080] border mt-1 w-[300px] max-h-60 overflow-y-auto shadow-lg">
           {filteredCompanies.map((company, index) => (
             <li
               className="py-2 px-3 hover:bg-gray-100 cursor-pointer"

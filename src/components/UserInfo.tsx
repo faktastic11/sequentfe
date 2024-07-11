@@ -1,9 +1,9 @@
 // UserInfo.tsx
 
 import React, { useState, useEffect } from 'react';
-import TopBar from './Topbar';
-import MainLayout from './mainLayout';
+
 import guidanceBackend, { UserInfoAPIResponse } from '../services/guidanceBackend';
+import TopBar from './Topbar';
 
 type Props = {};
 
@@ -26,7 +26,7 @@ const UserInfo: React.FC<Props> = () => {
     }, []);
 
     return (
-        <MainLayout>
+        <div>
             <div className="sticky top-0 z-[100]">
                 <TopBar activeCompany={null} setActiveCompany={() => {}} />
             </div>
@@ -45,7 +45,7 @@ const UserInfo: React.FC<Props> = () => {
                     </div>
                 </div>
             </div>
-        </MainLayout>
+        </div>
     );
 };
 

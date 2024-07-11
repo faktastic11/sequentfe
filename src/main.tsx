@@ -12,6 +12,7 @@ import UserInfo from './components/UserInfo';
 import CompanyMainlayout from './layout/CompanyMainlayout';
 import ProtectedRoute from './components/ProtectedRoutes';
 import { AuthProvider } from './context/AuthContext';
+import GuidanceHome from './components/GuidanceHome';
 
 const queryClient = new QueryClient();
 
@@ -28,7 +29,10 @@ const browserRouter = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <CompanyMainlayout />,
+        element: <CompanyMainlayout>
+          <GuidanceHome />
+        </CompanyMainlayout>
+        ,
       },
     ],
   },
@@ -44,7 +48,9 @@ const browserRouter = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <UserInfo />,
+        element: <CompanyMainlayout>
+          <UserInfo />
+        </CompanyMainlayout>
       },
     ],
   }

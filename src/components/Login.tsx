@@ -86,11 +86,11 @@ const Login: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-[#6200ee]  text-white py-2 rounded-md hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50"
+            className="w-full bg-[#800080]  text-white py-2 rounded-md hover:bg-[#b19cd9] focus:outline-none focus:ring-2 focus:ring-[#b19cd9] focus:ring-opacity-50"
           >
             Login
           </button>
-          <p className="mt-4 text-center font-semibold text-[#6200ee]">
+          <p className="mt-4 text-center font-semibold text-[#800080]">
             New here? <Link to="/signup" className="text-[#242424] hover:text-[#585656]">Signup</Link>
           </p>
         </form>

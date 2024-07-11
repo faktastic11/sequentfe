@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Dropdown } from 'primereact/dropdown';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 interface CompaniesPeriodDropdownProps {
   companyGuidancePeriod: { fiscalYear: number | null; fiscalQuarter: number | null };
@@ -17,6 +17,10 @@ export default function CompanyPeriodDropdown({
   companyPeriods,
   loading,
 }: CompaniesPeriodDropdownProps): JSX.Element | undefined {
+  useEffect(() => {
+    if (companyPeriods.length > 0 && companyPeriods[0]?.value?.fiscalYear && companyPeriods[0]?.value?.fiscalQuarter)
+      setCompanyGuidancePeriod({ fiscalYear: companyPeriods[0]?.value?.fiscalYear, fiscalQuarter: companyPeriods[0]?.value?.fiscalQuarter });
+  }, [companyPeriods]);
   return !loading ? (
     <Dropdown
       value={companyGuidancePeriod}

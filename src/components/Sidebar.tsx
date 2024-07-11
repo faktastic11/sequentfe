@@ -18,11 +18,16 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
     const [selectedItem, setSelectedItem] = useState<string>('home');
     const navigate = useNavigate();
     const location = useLocation();
-    const fetchRecentSearches = async () => {
+    const fetchRecentSearches = async (isInitialData=false) => {
         try {
             const response: RecentSearchesAPIResponse = await guidanceBackend.getRecentSearches();
             if (response && response.searches) {
                 setRecentSearches(response.searches);
+                if(isInitialData){
+                    const search = response.searches[response.searches.length - 1];
+                    setActiveCompany(search);
+                    setSearchCompany(true);
+                }
             } else {
                 console.error('Unexpected response format:', response);
             }
@@ -38,7 +43,7 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
     },[activeCompany])
 
     useEffect(() => {
-        fetchRecentSearches();
+        fetchRecentSearches(true);
     }, []);
 
     useEffect(() => {
@@ -78,15 +83,21 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
             setSearchCompany(false);
         }
     };
-
+    const handleSearchClick = (search: string) => {
+        setActiveCompany(search);
+        setSearchCompany(true);
+        handleNavLinkClick(search);
+        navigate('/guidance');
+    };
+    
     return (
-        <div className={`relative flex flex-col border border-r-[#6200ee] ${isCollapsed ? 'w-16' : 'w-[180px]'} bg-[#f2f2f2] text-black`}>
+        <div className={`relative flex flex-col border border-r-[#800080] transition-all duration-300 ease-in-out ${isCollapsed ? 'w-16' : 'w-[180px]'} bg-[#f2f2f2] text-black`}>
             <ToastContainer />
             <div className="absolute top-4 left-4 cursor-pointer" onClick={toggleCollapse}>
                 {isCollapsed ? (
-                    <BiMenu color='black' size={36} />
+                    <BiMenu color='#800080' size={36} />
                 ) : (
-                    <BiX color='black' size={36} />
+                    <BiX color='#800080' size={36} />
                 )}
             </div>
             {!isCollapsed && (
@@ -96,7 +107,7 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
                             <li>
                                 <NavLink
                                     to="/guidance"
-                                    className={`block px-5 py-2 rounded ${selectedItem === 'home' ? 'text-white bg-[#6200ee]' : 'text-[#6200ee] hover:bg-purple-100'}`}
+                                    className={`block px-5 py-2 rounded ${selectedItem === 'home' ? 'text-white bg-[#800080]' : 'text-[#800080] hover:bg-[#b19cd9]'}`}
                                     onClick={() => handleNavLinkClick('home')}
                                     end
                                 >
@@ -106,7 +117,7 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
                             <li>
                                 <NavLink
                                     to="/user-info"
-                                    className={`block px-5 py-2 rounded ${selectedItem === 'account' ? 'text-white bg-[#6200ee]' : 'text-[#6200ee] hover:bg-purple-100'}`}
+                                    className={`block px-5 py-2 rounded ${selectedItem === 'account' ? 'text-white bg-[#800080]' : 'text-[#800080] hover:bg-[#b19cd9]'}`}
                                     onClick={() => handleNavLinkClick('account')}
                                 >
                                     Account
@@ -115,12 +126,8 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
                             {recentSearches.map((search, index) => (
                                 <li key={index}>
                                     <div
-                                        className={`block px-5 py-2 rounded cursor-pointer ${selectedItem === search ? 'text-white bg-[#6200ee]' : 'text-[#6200ee] hover:bg-purple-100'}`}
-                                        onClick={() => {
-                                            setActiveCompany(search);
-                                            setSearchCompany(true);
-                                            handleNavLinkClick(search);
-                                        }}
+                                        className={`block px-5 py-2 rounded cursor-pointer ${selectedItem === search ? 'text-white bg-[#800080]' : 'text-[#800080] hover:bg-[#b19cd9]'}`}
+                                        onClick={() => handleSearchClick(search)}
                                     >
                                         {search}
                                     </div>
@@ -133,7 +140,7 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
             <div className="mt-auto">
                 {isCollapsed ? (
                     <BiLogOut
-                        color='black'
+                        color='#800080'
                         size={36}
                         className="cursor-pointer mx-2 mb-4"
                         onClick={handleLogout}
@@ -141,9 +148,16 @@ const Sidebar: React.FC<Props> = ({ setActiveCompany, setSearchCompany, activeCo
                 ) : (
                     <button
                         onClick={handleLogout}
-                        className="mx-4 bg-[#6200ee] hover:bg-purple-800 text-white py-2 px-5 rounded mb-4"
+                        className="mx-4 bg-[#800080] flex items-center justify-center gap-2 hover:bg-[#b19cd9] text-white py-2 px-5 rounded mb-4"
                     >
+                        <BiLogOut
+                        color='#fff'
+                        size={18}
+                        className=""
+                        
+                    />
                         Logout
+
                     </button>
                 )}
             </div>

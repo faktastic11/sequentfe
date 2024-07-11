@@ -105,7 +105,7 @@ const Signup: React.FC<Props> = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-[#6200ee]  text-white py-2 rounded-md hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50"
+                        className="w-full bg-[#800080]  text-white py-2 rounded-md hover:bg-[#b19cd9] focus:outline-none focus:ring-2 focus:ring-[#b19cd9] focus:ring-opacity-50"
                     >
                         Signup
                     </button>

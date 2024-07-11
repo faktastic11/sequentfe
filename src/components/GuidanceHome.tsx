@@ -12,19 +12,12 @@ import { TabView, TabPanel } from 'primereact/tabview';
 import TopBar from './Topbar';
 import data from '../data.json';
 import GuidanceBackend from '../services/guidanceBackend';
+import { useCompanyContext } from '../layout/CompanyMainlayout';
 
-export default function GuidanceHome({
-  activeCompany,
-  setActiveCompany,
-  setSearchCompany,
-  searchCompany
-}:
-  {
-    activeCompany: string | null;
-    setActiveCompany: React.Dispatch<React.SetStateAction<string | null>>;
-    setSearchCompany: React.Dispatch<React.SetStateAction<boolean>>;
-    searchCompany: boolean;
-  }): JSX.Element {
+export default function GuidanceHome(): JSX.Element {
+
+  const { activeCompany, setActiveCompany, searchCompany, setSearchCompany } = useCompanyContext();
+
 
   const [companyGuidancePeriod, setCompanyGuidancePeriod] = useState<{ fiscalYear: number | null; fiscalQuarter: number | null }>({
     fiscalYear: null,
@@ -89,7 +82,7 @@ export default function GuidanceHome({
           <TabPanel header="Guidance">
             <div className='my-2 flex items-center justify-end'>
               <div className='flex items-center justify-center gap-4'>
-                <h3 className='text-[#6200ee] font-medium'>Earnings Reports</h3>
+                <h3 className='text-[#800080] font-medium'>Earnings Reports</h3>
                 {activeCompany && (
                   <CompanyPeriodDropdown
                     activeCompany={activeCompany}
@@ -102,7 +95,7 @@ export default function GuidanceHome({
                 )}
               </div>
             </div>
-            <div className='my-4 border border-[#6200ee] rounded'>
+            <div className='my-4 border border-[#800080] rounded'>
               {activeCompany && companyGuidancePeriod.fiscalYear && (
                 <CompanyGuidanceData companyGuidancePeriod={companyGuidancePeriod} activeCompany={activeCompany} />
               )}
