@@ -1,0 +1,97 @@
+{
+    "Sheet1":[
+     {
+      "LineItem": "Revenue",
+      "Earnings Report": "Q4 2023",
+      "Low": 300,
+      "High": 400,
+      "Unit": "None",
+      "Source": "We continue to expect the Nuance acquisition will be minimally dilutive in FY '22 and accretive in FY '23 to non-GAAP EPS.",
+      "Excerpt": "We continue to expect the Nuance acquisition will be minimally dilutive in FY '22 and accretive in FY '23 to non-GAAP EPS. Second, FX. The U.S. dollar strengthened throughout the quarter and created an incremental one-point FX headwind to total company revenue compared to expectations."
+     },
+     {
+      "Earnings Report": "Q3 2023",
+      "Low": 300,
+      "High": 400,
+      "Unit": "None",
+      "Source": "We continue to expect the Nuance acquisition will be minimally dilutive in FY '22 and accretive in FY '23 to non-GAAP EPS.",
+      "Excerpt": "We continue to expect the Nuance acquisition will be minimally dilutive in FY '22 and accretive in FY '23 to non-GAAP EPS. Second, FX. The U.S. dollar strengthened throughout the quarter and created an incremental one-point FX headwind to total company revenue compared to expectations."
+     },
+     {
+      "Earnings Report": "Q2 2023",
+      "Low": 200,
+      "High": 300,
+      "Unit": "None",
+      "Source": "Revenue generated in Russia represents less than 1% of total company revenue, and we expect that it will decline significantly.",
+      "Excerpt": "As a result, revenue and EPS were negatively impacted by $302 million and $0.03 per share, respectively. Finally, the war in Ukraine. We suspended all new sales of our products and services in Russia. Revenue generated in Russia represents less than 1% of total company revenue, and we expect that it will decline significantly."
+     },
+     {
+      "Earnings Report": "Q1 2023",
+      "Low": 200,
+      "High": 300,
+      "Unit": "percentage points",
+      "Source": "With the stronger U.S. dollar and based on current rates, we now expect FX to decrease total company revenue growth by approximately two points",
+      "Excerpt": "With the stronger U.S. dollar and based on current rates, we now expect FX to decrease total company revenue growth by approximately two points and to decrease total COGS and operating expense growth by approximately one point. Within the segments, we anticipate roughly three points of negative FX impact on revenue growth in productivity and business processes and two points in intelligent cloud and more personal computing. Second, my remarks for the next quarter include a full quarter of impact from the Nuance acquisition."
+     },
+     {
+      "LineItem": "EPS",
+      "Earnings Report": "Q4 2023",
+      "Low": 4,
+      "High": 5,
+      "Unit": "percentage points",
+      "Source": "we now expect FX to decrease total COGS and operating expense growth by approximately one point",
+      "Excerpt": "With the stronger U.S. dollar and based on current rates, we now expect FX to decrease total company revenue growth by approximately two points and to decrease total COGS and operating expense growth by approximately one point. Within the segments, we anticipate roughly three points of negative FX impact on revenue growth in productivity and business processes and two points in intelligent cloud and more personal computing. Second, my remarks for the next quarter include a full quarter of impact from the Nuance acquisition."
+     },
+     {
+      "Earnings Report": "Q3 2023",
+      "Low": 4,
+      "High": 5,
+      "Unit": "percentage points",
+      "Source": "we anticipate roughly three points of negative FX impact on revenue growth in productivity and business processes",
+      "Excerpt": "With the stronger U.S. dollar and based on current rates, we now expect FX to decrease total company revenue growth by approximately two points and to decrease total COGS and operating expense growth by approximately one point. Within the segments, we anticipate roughly three points of negative FX impact on revenue growth in productivity and business processes and two points in intelligent cloud and more personal computing. Second, my remarks for the next quarter include a full quarter of impact from the Nuance acquisition."
+     },
+     {
+      "Earnings Report": "Q2 2023",
+      "Low": 2,
+      "High": 3,
+      "Unit": "percentage points",
+      "Source": "two points in intelligent cloud",
+      "Excerpt": "With the stronger U.S. dollar and based on current rates, we now expect FX to decrease total company revenue growth by approximately two points and to decrease total COGS and operating expense growth by approximately one point. Within the segments, we anticipate roughly three points of negative FX impact on revenue growth in productivity and business processes and two points in intelligent cloud and more personal computing. Second, my remarks for the next quarter include a full quarter of impact from the Nuance acquisition."
+     },
+     {
+      "Earnings Report": "Q1 2023",
+      "Low": 2,
+      "High": 3,
+      "Unit": "percentage points",
+      "Source": "and two points in more personal computing",
+      "Excerpt": "With the stronger U.S. dollar and based on current rates, we now expect FX to decrease total company revenue growth by approximately two points and to decrease total COGS and operating expense growth by approximately one point. Within the segments, we anticipate roughly three points of negative FX impact on revenue growth in productivity and business processes and two points in intelligent cloud and more personal computing. Second, my remarks for the next quarter include a full quarter of impact from the Nuance acquisition."
+     },
+     {
+      "LineItem": "Effective Tax Rate",
+      "Earnings Report": "Q4 2023",
+      "Low": 0.16,
+      "High": 0.19,
+      "Unit": "Million USD",
+      "Source": "Third, we anticipate the war in Ukraine to continue to impact our business in Q4 with a roughly $110 million impact on revenue and minimal impact on operating expenses.",
+      "Excerpt": "Third, we anticipate the war in Ukraine to continue to impact our business in Q4 with a roughly $110 million impact on revenue and minimal impact on operating expenses. Next, we have taken into account the current impact of shutdowns in China in our outlook. However, extended production shutdowns that reach into May would further negatively impact our outlook across Windows OEM, Surface, and Xbox hardware. Finally, the outlook we give, unless specifically noted otherwise, is on a USD basis."
+     },
+     {
+      "Earnings Report": "Q3 2023",
+      "Low": 0.16,
+      "High": 0.19,
+      "Unit": "Not specified",
+      "Source": "Third, we anticipate the war in Ukraine to continue to impact our business in Q4 with a roughly $110 million impact on revenue and minimal impact on operating expenses.",
+      "Excerpt": "Third, we anticipate the war in Ukraine to continue to impact our business in Q4 with a roughly $110 million impact on revenue and minimal impact on operating expenses. Next, we have taken into account the current impact of shutdowns in China in our outlook. However, extended production shutdowns that reach into May would further negatively impact our outlook across Windows OEM, Surface, and Xbox hardware. Finally, the outlook we give, unless specifically noted otherwise, is on a USD basis."
+     },
+     {
+      "Earnings Report": "Q2 2023",
+      "Low": 0.15,
+      "High": 0.17
+     },
+     {
+      "Earnings Report": "Q1 2023",
+      "Low": 0.15,
+      "High": 0.17
+     }
+    ]
+    }
