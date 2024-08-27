@@ -1,67 +1,38 @@
-// src/main.tsx
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import ErrorPage from './components/ErrorPage';
-import './index.scss';
-
+import { RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Login from './components/Login';
-import Signup from './components/SignUp';
-import UserInfo from './components/UserInfo';
-import CompanyMainlayout from './layout/CompanyMainlayout';
-import ProtectedRoute from './components/ProtectedRoutes';
-import { AuthProvider } from './context/AuthContext';
-import GuidanceHome from './components/GuidanceHome';
+import { Toaster } from 'react-hot-toast';
 
-const queryClient = new QueryClient();
+import browserRouter from '@/routes';
+import { AuthProvider } from '@/context/auth-context';
 
-const browserRouter = createBrowserRouter([
-  {
-    path: '/',
-    element: <Login />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: '/guidance',
-    element: <ProtectedRoute />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '',
-        element: <CompanyMainlayout>
-          <GuidanceHome />
-        </CompanyMainlayout>
-        ,
+import '@/index.css'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+      queries: {
+          retry: 2,
+          retryDelay: 1000,
+          staleTime: Infinity,
+          gcTime: Infinity,
+          refetchOnWindowFocus: false,
       },
-    ],
   },
-  {
-    path: '/signup',
-    element: <Signup />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: '/user-info',
-    element: <ProtectedRoute />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '',
-        element: <CompanyMainlayout>
-          <UserInfo />
-        </CompanyMainlayout>
-      },
-    ],
-  }
-]);
+});
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <RouterProvider router={browserRouter} />
-      </AuthProvider>
-    </QueryClientProvider>
-  </React.StrictMode>,
-);
+const rootElement = document.getElementById('root') as HTMLElement;
+
+if (!rootElement.innerHTML) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RouterProvider router={browserRouter} />
+          <Toaster />
+        </AuthProvider>
+      </QueryClientProvider>
+    </StrictMode>
+  );
+}

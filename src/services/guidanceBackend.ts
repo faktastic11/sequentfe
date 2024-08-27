@@ -20,9 +20,12 @@ export interface RecentSearchesAPIResponse {
 }
 
 export interface UserInfoAPIResponse {
-  user: string
-  name: string
-  email: string
+  message: string;
+  user: {
+    name: string;
+    email: string;
+    _id: string
+  }
 }
 
 export interface CompanyGuidanceAPIResponseT {
@@ -120,7 +123,7 @@ class GuidanceBackend {
     return response.data as TickerTranscriptPeriodsAPIResponseT
   }
 
-  async getCompanyGuidance(companyTicker: string, transcriptYear: number, transcriptQuarter: number): Promise<CompanyGuidanceAPIResponseT> {
+  async getCompanyGuidance(companyTicker: string, transcriptYear?: number, transcriptQuarter?: number|string): Promise<CompanyGuidanceAPIResponseT> {
     const response = await axios.get(
       `${this.url}/api/v1/guidance?companyTicker=${companyTicker}&transcriptYear=${transcriptYear}&transcriptQuarter=${transcriptQuarter}`,
       this.getHeaders(),
@@ -141,6 +144,7 @@ class GuidanceBackend {
   async logout(): Promise<void> {
     const response = await axios.get(`${this.url}/api/v1/users/logout`, this.getHeaders())
     this.setToken(null)
+    localStorage.setItem('hasRunEffect', 'false');
     localStorage.removeItem('token')
     return response.data as void
   }

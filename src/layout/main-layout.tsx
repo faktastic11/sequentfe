@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext, ReactNode } from 'react';
-import MainLayout from '../components/mainLayout';
+import Sidebar from './sidebar';
+import TopBar from './topbar';
 
 type CompanyContextType = {
   activeCompany: string | null;
@@ -23,6 +24,7 @@ type Props = {
 };
 
 const CompanyMainLayout: React.FC<Props> = ({ children }) => {
+
   const [activeCompany, setActiveCompany] = useState<string | null>(null);
   const [searchCompany, setSearchCompany] = useState<boolean>(false);
 
@@ -30,14 +32,15 @@ const CompanyMainLayout: React.FC<Props> = ({ children }) => {
     <CompanyContext.Provider
       value={{ activeCompany, setActiveCompany, searchCompany, setSearchCompany }}
     >
-      <MainLayout
-        setActiveCompany={setActiveCompany}
-        setSearchCompany={setSearchCompany}
-        searchCompany={searchCompany}
-        activeCompany={activeCompany}
-      >
+      <div className="flex h-screen  bg-gray-100">
+      <Sidebar />
+      <div className="flex-1 flex flex-col max-h-screen overflow-auto">
+      <div className="sticky top-0 z-[100]">
+        <TopBar />
+      </div>
         {children}
-      </MainLayout>
+      </div>
+    </div>
     </CompanyContext.Provider>
   );
 };
