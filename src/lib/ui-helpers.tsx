@@ -36,7 +36,6 @@ export const TableSkeleton = ({ rows = 6, columns = 7 }) => {
 
 const MAX_HEIGHT_TEMPLATES = 200;
 export const sourceParagraphTemplate = (rowData: DataTableRowT) => {
-  console.log(rowData)
   return (
     <div style={{ overflow: 'auto', maxHeight: MAX_HEIGHT_TEMPLATES, fontSize: '0.7rem' }}>
       <Highlighter

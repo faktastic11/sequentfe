@@ -7,7 +7,7 @@ import { CompanyYear } from '@/lib/types';
 
 export default function GuidanceYearDropdown({ fiscalYears }: { fiscalYears: CompanyYear[] }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const year = Number(searchParams.get("year")) || fiscalYears[0]?.value
+  const year = Number(searchParams.get("fYear")) || fiscalYears[0]?.value
   const [guidanceYear, setGuidanceYear] = useState<number | null>(year);
 
   return (

@@ -65,7 +65,7 @@ export default function CompaniesInput({ companies }: CompaniesInputProps): Reac
         placeholder="Enter a Ticker"
         onClick={() => setIsOpen(true)}
       />
-      {isOpen && (
+      {isOpen && filteredCompanies.length > 0 && (
         <ul className="absolute rounded z-10 bg-white text-primary border mt-1 w-full max-h-60 overflow-y-auto shadow-lg">
           {filteredCompanies?.map((company, index) => (
             <li

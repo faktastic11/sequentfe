@@ -27,9 +27,9 @@ const mapGuidanceData = (
 
     return {
       lineItem: rawLineItem || '',
-      period: rawPeriod || '',    
-      low: rawLow || '0',         
-      high: rawHigh || '0',       
+      period: rawPeriod || '',
+      low: rawLow || '0',
+      high: rawHigh || '0',
       source: rawTranscriptSourceSentence || '',
       excerpt: rawTranscriptParagraph?.page_content || '',
     };
@@ -101,7 +101,7 @@ export default function CompanyGuidanceDataTable({ companyPeriods }: { companyPe
           </button>
         </div>
         <DataTable stripedRows showGridlines value={mappedData} tableStyle={{ minWidth: '50rem', fontSize: '0.9rem' }} maxLength={250}>
-          <Column field="lineItem" header="Line Item" bodyStyle={{ minWidth: '300px' }} />
+          <Column field="lineItem" header="Line Item" bodyStyle={{ width: 'fit-content', maxWidth: '450px' }} />
           <Column field="period" header="Period" bodyStyle={{ minWidth: '100px' }} />
           <Column field="low" header="Low" />
           <Column field="high" header="High" />

@@ -11,13 +11,13 @@ import '@/index.css'
 
 const queryClient = new QueryClient({
   defaultOptions: {
-      queries: {
-          retry: 2,
-          retryDelay: 1000,
-          staleTime: Infinity,
-          gcTime: Infinity,
-          refetchOnWindowFocus: false,
-      },
+    queries: {
+      retry: 2,
+      retryDelay: 1000,
+      staleTime: Infinity,
+      gcTime: Infinity,
+      refetchOnWindowFocus: false,
+    },
   },
 });
 

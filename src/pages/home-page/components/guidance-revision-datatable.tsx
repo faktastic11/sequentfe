@@ -69,7 +69,7 @@ export default function CompanyGuidanceRevisionDatatable({ companyYears }: { com
       </div>
       <div className='my-4 py-5 px-2 border border-primary rounded'>
         <DataTable stripedRows showGridlines value={mappedData} tableStyle={{ minWidth: '50rem', fontSize: '0.9rem' }} maxLength={250}>
-          <Column field="lineItem" header="Line Item" className='align-top max-w-xs truncate'></Column>
+          <Column field="lineItem" header="Line Item" bodyStyle={{ width: 'fit-content', maxWidth: '450px' }} className='align-top max-w-xs truncate'></Column>
           <Column field="earningsReport" header="Earnings Report"></Column>
           <Column field="low" header="Low"></Column>
           <Column field="high" header="High"></Column>
