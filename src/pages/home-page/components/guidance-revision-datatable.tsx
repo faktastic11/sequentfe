@@ -36,7 +36,7 @@ function flattenMetrics(data: GuidanceRevisionsAPIResponseT): FlattenedMetric[] 
 export default function CompanyGuidanceRevisionDatatable({ companyYears }: { companyYears: CompanyYear[] }) {
   const [searchParams] = useSearchParams();
   const activeCompany = searchParams.get('ticker');
-  const fiscalYear = Number(searchParams.get("fYear"));
+   const fiscalYear = Number(searchParams.get("fYear")) || companyYears?.[0]?.value;
   const metricType = searchParams.get("metricType") || "guidance";
 
   const { data, isLoading } = useFetchCompanyGuidanceRevision(activeCompany, fiscalYear,
